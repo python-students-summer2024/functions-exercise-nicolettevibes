@@ -5,7 +5,7 @@ Students are told whether their answer was correct or not.
 """
 
 import app_functions
-
+from app_functions import roll_die, get_question_type, print_question, input_answer, is_correct_answer, print_congratulations, print_correct_answer, print_error_message
 
 def main():
     """
@@ -23,7 +23,18 @@ def main():
     print("Welcome to the Math App!!!")
     print("")  # line break
     ### write code to complete this function BELOW here ###
-
+    die_1 = roll_die()
+    die_2 = roll_die()
+    question_type = get_question_type()
+    print_question(die_1, die_2, question_type)
+    user_answer = input_answer()
+    if user_answer == -1:
+        print_error_message()
+    else:
+        if is_correct_answer(die_1, die_2, question_type, user_answer):
+            print_congratulations(question_type)
+        else:
+            print_correct_answer(die_1, die_2, question_type)
     ### write code to complete this function ABOVE here ###
     print("")  # line break
     print("Game over!!!")
